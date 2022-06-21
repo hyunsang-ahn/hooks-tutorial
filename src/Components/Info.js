@@ -23,6 +23,7 @@ const Info = () => {
   const onReset = () => {
     setName('')
     setNickname('')
+    //input에 포커스 추가
     nameInput.current.focus()
   }
   return (
