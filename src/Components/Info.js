@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 const Info = () => {
   const [name, setName] = useState('')
@@ -19,11 +19,16 @@ const Info = () => {
   const onChangeNickname = e => {
     setNickname(e.target.value)
   }
-
+  const nameInput = useRef()
+  const onReset = () => {
+    setName('')
+    setNickname('')
+    nameInput.current.focus()
+  }
   return (
     <div>
       <div>
-        <input value={name} onChange={onChangeName}></input>
+        <input value={name} onChange={onChangeName} ref={nameInput}></input>
         <input value={nickname} onChange={onChangeNickname}></input>
 
       </div>
@@ -34,6 +39,7 @@ const Info = () => {
         <div>
           <b>닉네임 : </b> {nickname}
         </div>
+        <button onClick={onReset}>초기화</button>
       </div>
     </div>
   )
